@@ -8,7 +8,7 @@ set origin_dir "."
 set orig_proj_dir "[file normalize "$origin_dir/proj"]"
 
 # Create project
-create_project proj ./proj
+create_project proj ./proj -force
 
 # Set the directory path for the new project
 set proj_dir [get_property directory [current_project]]
@@ -41,6 +41,7 @@ if {[string equal [get_filesets -quiet constrs_1] ""]} {
 set obj [get_filesets constrs_1]
 
 # Empty (no sources present)
+read_xdc $origin_dir/hdl/contraints/ZYBO_MASTER.xdc
 
 # Set 'constrs_1' fileset properties
 set obj [get_filesets constrs_1]
@@ -84,3 +85,6 @@ set_property "part" "xc7z010clg400-1" $obj
 current_run -implementation [get_runs impl_1]
 
 puts "INFO: Project created:proj"
+
+launch_runs synth_1
+launch_runs impl_1  -to_step write_bitstream 

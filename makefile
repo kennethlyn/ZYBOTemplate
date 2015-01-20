@@ -1,4 +1,4 @@
 project: proj/
 
-proj/: 
-	vivado -mode batch -source tcl/project.tcl -nojournal -nolog > /dev/null
+proj/: ./contraints ./hdl
+	vivado -mode batch -source tcl/project.tcl -nojournal -nolog 
