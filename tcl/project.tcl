@@ -27,10 +27,13 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
-# Empty (no sources present)
-read_vhdl $origin_dir/hdl/vhdl/test.vhdl
 # Set 'sources_1' fileset properties
 set obj [get_filesets sources_1]
+set files [ list \
+	 "[file normalize "$origin_dir/hdl/vhdl/"]"\
+	 "[file normalize "$origin_dir/hdl/verilog/"]"\
+]
+add_files -fileset $obj $files
 
 # Create 'constrs_1' fileset (if not found)
 if {[string equal [get_filesets -quiet constrs_1] ""]} {
