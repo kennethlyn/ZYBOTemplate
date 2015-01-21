@@ -25,11 +25,3 @@ If you wish to open the project type:
 	cd proj
 	vivado proj.xpr &
 
-#Info
-Currently this only works with one VHDL source file which can be found in
-
-	hdl/vhdl/first.vhdl
-
-If you wish to add more you can modify the tcl script. I plan on adding support
-so that the whole hdl/vhdl/ directory is added in, or possible having
-a settings file where you can easily add sources.
