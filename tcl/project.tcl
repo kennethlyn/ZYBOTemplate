@@ -3,6 +3,7 @@
 #
 # Set the reference directory for source file relative paths (by default the value is script directory path)
 set origin_dir "."
+source "$origin_dir/settings.tcl"
 
 # Set the directory path for the original project from where this script was exported
 set orig_proj_dir "[file normalize "$origin_dir/proj"]"
@@ -26,14 +27,19 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 }
 
 # Set 'sources_1' fileset object
-set obj [get_filesets sources_1]
 # Set 'sources_1' fileset properties
 set obj [get_filesets sources_1]
 set files [ list \
 	 "[file normalize "$origin_dir/hdl/vhdl/"]"\
 	 "[file normalize "$origin_dir/hdl/verilog/"]"\
+	 "[file normalize "$origin_dir/hdl/bd/"]"\
 ]
 add_files -fileset $obj $files
+
+# Set the top level
+set obj [get_filesets sources_1]
+set_property "top" $topLevel $obj
+set_property "TOP_FILE" $topFile $obj
 
 # Create 'constrs_1' fileset (if not found)
 if {[string equal [get_filesets -quiet constrs_1] ""]} {
