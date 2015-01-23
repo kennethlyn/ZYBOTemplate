@@ -1,4 +1,4 @@
-less: ./build/output.bit
+pless: ./build/output.bit
 
 project: proj/
 
@@ -16,3 +16,4 @@ proj/: ./hdl
 
 clean:
 	rm -r build
+	rm -r proj/

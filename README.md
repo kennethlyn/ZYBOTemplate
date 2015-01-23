@@ -12,16 +12,18 @@ For me I type:
 
 	source /opt/Xilinx/Vivado/2014.4/setting64.sh
 
-To use the tcl script simple type:
+There are two different modes to operate this template. One with out a Vivado
+project and one with a Vivado project. To work with a project type:
 
-	make
+	make project
 
-This will generate a proj/ directory where a Vivado project is waiting to be
-used. It will also automatically run synthesis, implementation, and the
-bit stream generator.
+To work without a project type:
 
-If you wish to open the project type:
+	make pless
 
-	cd proj
-	vivado proj.xpr &
+There is a settings file in the root directory called settings.tcl. This
+includes a few important settings. Like top level design, top level design
+file, and the part. 
 
+#Future
+I plan on adding incremental builds in the future.   
