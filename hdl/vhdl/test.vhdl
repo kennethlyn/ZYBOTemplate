@@ -5,7 +5,6 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity first is
 	Port(
-		clk : in  std_logic;
 		led : out std_logic_vector(3 downto 0);
 		btn : in  std_logic_vector(3 downto 0)
 	);

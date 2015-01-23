@@ -17,7 +17,7 @@ set proj_dir [get_property directory [current_project]]
 # Set project properties
 set obj [get_projects proj]
 set_property "default_lib" "xil_defaultlib" $obj
-set_property "part" "xc7z010clg400-1" $obj
+set_property "part" $part $obj
 set_property "simulator_language" "Mixed" $obj
 set_property "target_language" "VHDL" $obj
 
@@ -69,26 +69,26 @@ set obj [get_filesets sim_1]
 
 # Create 'synth_1' run (if not found)
 if {[string equal [get_runs -quiet synth_1] ""]} {
-  create_run -name synth_1 -part xc7z010clg400-1 -flow {Vivado Synthesis 2014} -strategy "Vivado Synthesis Defaults" -constrset constrs_1
+  create_run -name synth_1 -part $part -flow {Vivado Synthesis 2014} -strategy "Vivado Synthesis Defaults" -constrset constrs_1
 } else {
   set_property strategy "Vivado Synthesis Defaults" [get_runs synth_1]
   set_property flow "Vivado Synthesis 2014" [get_runs synth_1]
 }
 set obj [get_runs synth_1]
-set_property "part" "xc7z010clg400-1" $obj
+set_property "part" $part $obj
 
 # set the current synth run
 current_run -synthesis [get_runs synth_1]
 
 # Create 'impl_1' run (if not found)
 if {[string equal [get_runs -quiet impl_1] ""]} {
-  create_run -name impl_1 -part xc7z010clg400-1 -flow {Vivado Implementation 2014} -strategy "Vivado Implementation Defaults" -constrset constrs_1 -parent_run synth_1
+  create_run -name impl_1 -part $part -flow {Vivado Implementation 2014} -strategy "Vivado Implementation Defaults" -constrset constrs_1 -parent_run synth_1
 } else {
   set_property strategy "Vivado Implementation Defaults" [get_runs impl_1]
   set_property flow "Vivado Implementation 2014" [get_runs impl_1]
 }
 set obj [get_runs impl_1]
-set_property "part" "xc7z010clg400-1" $obj
+set_property "part" $part $obj
 
 # set the current impl run
 current_run -implementation [get_runs impl_1]
