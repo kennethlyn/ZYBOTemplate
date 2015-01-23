@@ -1,7 +1,7 @@
-project: ./build/output.bit
+less: ./build/output.bit
 
 ./build/output.bit: ./hdl
-	vivado -mode batch -source tcl/project.tcl -nojournal -nolog 
+	vivado -mode batch -source tcl/projectless.tcl -nojournal -nolog 
 
 clean:
 	rm -r build
