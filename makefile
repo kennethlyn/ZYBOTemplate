@@ -1,3 +1,5 @@
+less: ./build/output.bit
+
 project: proj/
 
 open: proj/
@@ -9,5 +11,8 @@ proj/: ./hdl
 	@vivado -mode batch -source tcl/project.tcl -notrace -nojournal -nolog 
 	@echo "Done creating project"
 
+./build/output.bit: ./hdl
+	vivado -mode batch -source tcl/projectless.tcl -nojournal -nolog 
+
 clean:
-	rm -r proj
+	rm -r build
